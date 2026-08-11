@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Contact({ defaultMessage }) {
   const [name, setName] = useState('')
@@ -6,8 +6,13 @@ function Contact({ defaultMessage }) {
   const [message, setMessage] = useState('')
   const [showHelp, setShowHelp] = useState(false)
 
+  useEffect(() => {
+    console.log('[P2 Navigation] Mount: Contact Page (/contact)')
+  }, [])
+
   const handleSubmit = (event) => {
     event.preventDefault()
+    console.log('[P2 Contact Form] Submitted message:', { name, email, message })
   }
 
   return (

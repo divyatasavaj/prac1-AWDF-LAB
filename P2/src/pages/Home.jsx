@@ -1,8 +1,13 @@
+import { useEffect } from 'react'
 import Header from '../components/Header'
 import About from '../components/About'
 import Skills from '../components/Skills'
 
 function Home({ name, rollNumber, themeColor, bio, skills }) {
+  useEffect(() => {
+    console.log('[P2 Navigation] Mount: Home Page (/)')
+  }, [])
+
   return (
     <>
       <Header name={name} rollNumber={rollNumber} themeColor={themeColor} />

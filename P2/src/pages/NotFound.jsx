@@ -1,6 +1,10 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function NotFound() {
+  useEffect(() => {
+    console.warn('[P2 Navigation] Mount: 404 Not Found Page')
+  }, [])
   return (
     <main className="portfolio-main">
       <section className="portfolio-section not-found" aria-labelledby="not-found-heading">
