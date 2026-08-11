@@ -1,4 +1,10 @@
+import { useEffect } from 'react'
+
 function Footer({ email, phone, location, githubUrl, linkedinUrl, name }) {
+  useEffect(() => {
+    console.log('Footer loaded')
+  }, [])
+
   const currentYear = new Date().getFullYear()
 
   return (

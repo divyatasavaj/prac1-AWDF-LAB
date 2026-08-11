@@ -7,7 +7,7 @@ function Contact({ defaultMessage }) {
   const [showHelp, setShowHelp] = useState(false)
 
   useEffect(() => {
-    console.log('[P2 Navigation] Mount: Contact Page (/contact)')
+    console.log('Contact loaded')
   }, [])
 
   const handleSubmit = (event) => {

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const navItems = [
@@ -7,6 +8,10 @@ const navItems = [
 ]
 
 function NavBar({ darkMode, onToggleDarkMode, name }) {
+  useEffect(() => {
+    console.log('NavBar loaded')
+  }, [])
+
   return (
     <nav className="portfolio-nav" aria-label="Portfolio navigation">
       <div className="portfolio-nav-inner">

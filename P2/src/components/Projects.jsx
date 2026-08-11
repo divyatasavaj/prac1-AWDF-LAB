@@ -1,4 +1,10 @@
+import { useEffect } from 'react'
+
 function Projects({ projects }) {
+  useEffect(() => {
+    console.log('Projects loaded')
+  }, [])
+
   return (
     <section className="portfolio-section section-anchor" id="projects" aria-labelledby="projects-heading">
       <h3 id="projects-heading">Projects</h3>

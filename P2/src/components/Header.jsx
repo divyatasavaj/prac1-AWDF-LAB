@@ -1,4 +1,10 @@
+import { useEffect } from 'react'
+
 function Header({ name, rollNumber, themeColor }) {
+  useEffect(() => {
+    console.log('Header loaded')
+  }, [])
+
   return (
     <header className="portfolio-header" id="home" style={{ backgroundColor: themeColor }}>
       <p className="portfolio-greeting">Hello, I am</p>

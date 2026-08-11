@@ -1,4 +1,10 @@
+import { useEffect } from 'react'
+
 function Skills({ skillList }) {
+  useEffect(() => {
+    console.log('Skills loaded')
+  }, [])
+
   return (
     <section className="portfolio-section section-anchor" id="skills" aria-labelledby="skills-heading">
       <h3 id="skills-heading">Skills</h3>

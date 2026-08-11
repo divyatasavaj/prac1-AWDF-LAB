@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function NotFound() {
   useEffect(() => {
-    console.warn('[P2 Navigation] Mount: 404 Not Found Page')
+    console.log('NotFound loaded')
   }, [])
   return (
     <main className="portfolio-main">
