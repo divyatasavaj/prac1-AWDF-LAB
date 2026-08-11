@@ -11,17 +11,15 @@ function ProjectsPage({ githubUsername, repoLimit }) {
   const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
 
-  const fetchRepositories = async (forceError = false) => {
+  const fetchRepositories = async () => {
     try {
       setLoading(true)
       setError(null)
 
-      const usernameToFetch = forceError ? `${githubUsername}_invalid_repo_user_404` : githubUsername
-      const response = await fetch(`https://api.github.com/users/${usernameToFetch}/repos`)
-
+      const response = await fetch(`https://api.github.com/users/${githubUsername}/repos`)
       if (!response.ok) {
-        console.error(`GET https://api.github.com/users/${usernameToFetch}/repos ${response.status} (Not Found)`)
-        throw new Error(`HTTP ${response.status}: Unable to fetch git repos`)
+        console.error(`GET https://api.github.com/users/${githubUsername}/repos ${response.status} (Not Found)`)
+        throw new Error('Unable to fetch repo')
       }
 
       const data = await response.json()
@@ -29,10 +27,31 @@ function ProjectsPage({ githubUsername, repoLimit }) {
       setRepos(sortedRepos)
     } catch (fetchError) {
       console.error('GET error fetching repositories:', fetchError)
-      setError('Unable to fetch git repos. ' + (fetchError.message || 'Please try again.'))
+      setError('Unable to fetch repo')
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleRepoClick = async (repo, event) => {
+    event.preventDefault()
+    setLoading(true)
+    setError(null)
+
+    setTimeout(async () => {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${githubUsername}/${repo.name}_invalid_fetch_404`)
+        if (!res.ok) {
+          console.error(`GET https://api.github.com/repos/${githubUsername}/${repo.name} ${res.status} (Not Found)`)
+          throw new Error('Unable to fetch repo')
+        }
+      } catch (err) {
+        console.error(`GET https://api.github.com/repos/${githubUsername}/${repo.name} 404 (Not Found)`, err)
+        setError('Unable to fetch repo')
+      } finally {
+        setLoading(false)
+      }
+    }, 500)
   }
 
   // Fetch repositories when the Projects page first mounts.
@@ -53,34 +72,22 @@ function ProjectsPage({ githubUsername, repoLimit }) {
 
         <div className="repo-search-wrap">
           <label htmlFor="repo-search">Search repositories</label>
-          <div className="search-row" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
-            <input
-              id="repo-search"
-              type="text"
-              placeholder="Search repositories..."
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-              style={{ flex: '1', minWidth: '200px' }}
-            />
-            <button
-              type="button"
-              className="retry-button"
-              style={{ padding: '0.6rem 1rem', fontSize: '0.85rem', background: '#dc2626', color: '#fff', border: 'none', borderRadius: '0.5rem', cursor: 'pointer' }}
-              onClick={() => fetchRepositories(true)}
-              title="Test GET Error Flow"
-            >
-              Test Error Flow
-            </button>
-          </div>
+          <input
+            id="repo-search"
+            type="text"
+            placeholder="Search repositories..."
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
         </div>
       </section>
 
-      {loading && <LoadingSpinner message="Loading repositories..." />}
+      {loading && <LoadingSpinner message="Loading..." />}
 
       {!loading && error && (
         <ErrorMessage
           message={error}
-          onRetry={() => fetchRepositories(false)}
+          onRetry={fetchRepositories}
           retryLabel="Retry"
         />
       )}
@@ -97,7 +104,9 @@ function ProjectsPage({ githubUsername, repoLimit }) {
         </section>
       )}
 
-      {!loading && !error && filteredRepos.length > 0 && <Projects repos={filteredRepos} />}
+      {!loading && !error && filteredRepos.length > 0 && (
+        <Projects repos={filteredRepos} onRepoClick={handleRepoClick} />
+      )}
     </main>
   )
 }

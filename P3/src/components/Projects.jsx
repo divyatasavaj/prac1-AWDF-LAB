@@ -1,4 +1,4 @@
-function Projects({ repos }) {
+function Projects({ repos, onRepoClick }) {
   return (
     <section className="portfolio-section section-anchor" id="projects" aria-labelledby="projects-heading">
       <h3 id="projects-heading">Repository Showcase</h3>
@@ -9,7 +9,11 @@ function Projects({ repos }) {
             <p>{repo.description || 'No description available'}</p>
             <p className="repo-meta">⭐ Stars: {repo.stargazers_count}</p>
             <p className="repo-meta">Language: {repo.language || 'Not specified'}</p>
-            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="repo-link">
+            <a
+              href={repo.html_url}
+              onClick={(e) => onRepoClick && onRepoClick(repo, e)}
+              className="repo-link"
+            >
               View on GitHub
             </a>
           </article>
