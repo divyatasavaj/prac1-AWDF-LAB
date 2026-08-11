@@ -11,21 +11,25 @@ function ProjectsPage({ githubUsername, repoLimit }) {
   const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
 
-  const fetchRepositories = async () => {
+  const fetchRepositories = async (forceError = false) => {
     try {
       setLoading(true)
       setError(null)
 
-      const response = await fetch(`https://api.github.com/users/${githubUsername}/repos`)
+      const usernameToFetch = forceError ? `${githubUsername}_invalid_repo_user_404` : githubUsername
+      const response = await fetch(`https://api.github.com/users/${usernameToFetch}/repos`)
+
       if (!response.ok) {
-        throw new Error(`Failed to fetch repositories: ${response.status}`)
+        console.error(`GET https://api.github.com/users/${usernameToFetch}/repos ${response.status} (Not Found)`)
+        throw new Error(`HTTP ${response.status}: Unable to fetch git repos`)
       }
 
       const data = await response.json()
       const sortedRepos = [...data].sort((a, b) => b.stargazers_count - a.stargazers_count)
       setRepos(sortedRepos)
     } catch (fetchError) {
-      setError(fetchError.message || 'Unable to load repositories. Please try again.')
+      console.error('GET error fetching repositories:', fetchError)
+      setError('Unable to fetch git repos. ' + (fetchError.message || 'Please try again.'))
     } finally {
       setLoading(false)
     }
@@ -49,13 +53,25 @@ function ProjectsPage({ githubUsername, repoLimit }) {
 
         <div className="repo-search-wrap">
           <label htmlFor="repo-search">Search repositories</label>
-          <input
-            id="repo-search"
-            type="text"
-            placeholder="Search repositories..."
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-          />
+          <div className="search-row" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
+            <input
+              id="repo-search"
+              type="text"
+              placeholder="Search repositories..."
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              style={{ flex: '1', minWidth: '200px' }}
+            />
+            <button
+              type="button"
+              className="retry-button"
+              style={{ padding: '0.6rem 1rem', fontSize: '0.85rem', background: '#dc2626', color: '#fff', border: 'none', borderRadius: '0.5rem', cursor: 'pointer' }}
+              onClick={() => fetchRepositories(true)}
+              title="Test GET Error Flow"
+            >
+              Test Error Flow
+            </button>
+          </div>
         </div>
       </section>
 
@@ -63,8 +79,8 @@ function ProjectsPage({ githubUsername, repoLimit }) {
 
       {!loading && error && (
         <ErrorMessage
-          message={`Unable to load repositories. ${error}`}
-          onRetry={fetchRepositories}
+          message={error}
+          onRetry={() => fetchRepositories(false)}
           retryLabel="Retry"
         />
       )}
