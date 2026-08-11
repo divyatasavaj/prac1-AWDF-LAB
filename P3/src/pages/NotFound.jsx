@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 function NotFound() {
+  console.log("NotFound loaded")
   return (
     <main className="portfolio-main">
       <section className="portfolio-section not-found" aria-labelledby="not-found-heading">

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 function Contact({ defaultMessage }) {
+  console.log("Contact loaded")
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')

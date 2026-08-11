@@ -4,6 +4,8 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import ErrorMessage from '../components/ErrorMessage'
 
 function ProjectsPage({ githubUsername, repoLimit }) {
+  console.log("Projects loaded")
+
   const [repos, setRepos] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
