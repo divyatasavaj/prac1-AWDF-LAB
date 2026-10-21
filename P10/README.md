@@ -217,3 +217,12 @@ npm run dev       # Launch Vite development server on http://localhost:5173
 
 ### Q3: How does Node.js achieve asynchronous non-blocking I/O with EventEmitter?
 **Answer:** Node.js uses single-threaded event loop architecture backed by libuv. When `emit()` is invoked, it synchronously calls listener callbacks. If the callback schedules an asynchronous operation (such as `setTimeout`, `setImmediate`, file I/O, or database query), the callback delegates the task to the libuv event loop/threadpool and immediately returns control, allowing the HTTP response to be flushed to the client before the background timer fires.
+
+## Student Information
+
+- **Name:** Divyata Savaj
+- **ID:** 24CS091
+- **Email:** 24cs091@charusat.edu.in
+- **Semester:** 5th Semester
+- **Program:** B.Tech
+- **Department:** CSE-CSPIT
