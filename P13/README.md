@@ -191,3 +191,12 @@ Invoke-RestMethod -Uri http://localhost:5000/api/ai/generate-description `
 
 ### Q3: How does rate limiting protect both client and provider in AI architectures?
 **Answer:** Rate limiting caps the frequency of incoming requests (e.g. 5 requests/minute). It protects the server from Denial of Service (DoS) attacks, stops accidental client re-render loops from burning API credits, and prevents HTTP 429 quota exhaustion errors from upstream model providers.
+
+## Student Information
+
+- **Name:** Divyata Savaj
+- **ID:** 24CS091
+- **Email:** 24cs091@charusat.edu.in
+- **Semester:** 5th Semester
+- **Program:** B.Tech
+- **Department:** CSE-CSPIT
