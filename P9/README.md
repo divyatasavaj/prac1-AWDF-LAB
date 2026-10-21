@@ -191,3 +191,12 @@ npm run dev
 ## 👨‍💻 Author
 **Divyata Savaj (24CS091)**  
 Department of Computer Science & Engineering
+
+## Student Information
+
+- **Name:** Divyata Savaj
+- **ID:** 24CS091
+- **Email:** 24cs091@charusat.edu.in
+- **Semester:** 5th Semester
+- **Program:** B.Tech
+- **Department:** CSE-CSPIT
