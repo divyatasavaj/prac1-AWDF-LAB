@@ -1,12 +1,9 @@
-function Header({ name, rollNumber, themeColor }) {
-  return (
-    <header className="portfolio-header" id="home" style={{ backgroundColor: themeColor }}>
-      <p className="portfolio-greeting">Hello, I am</p>
-      <h1>{name}</h1>
-      <h2>Student Portfolio</h2>
-      <p className="roll-number">Roll Number: {rollNumber}</p>
-    </header>
-  )
+function Header(){
+    return(
+        <>
+        <h1>Name : Divyata Savaj , ID : 24CS091</h1>
+        </>
+    );
 }
 
-export default Header
+export default Header;

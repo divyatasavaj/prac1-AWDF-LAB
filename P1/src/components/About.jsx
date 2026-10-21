@@ -1,10 +1,9 @@
-function About({ bio }) {
-  return (
-    <section className="portfolio-section section-anchor" id="about" aria-labelledby="about-heading">
-      <h3 id="about-heading">About Me</h3>
-      <p>{bio}</p>
-    </section>
-  )
+function About(){
+    return(
+<>
+<p>I am student of CSE - CSPIT . Currently in 5th Sem .</p>
+</>
+    );
 }
 
-export default About
+export default About;

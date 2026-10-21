@@ -1,63 +1,16 @@
-# Student Portfolio — React Practical 1
+# React + Vite
 
-## Description
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-This project is built for **Practical 1: Introduction to React and Component Architecture**.
-It demonstrates:
+Currently, two official plugins are available:
 
-- React with Vite
-- Functional components
-- Component architecture
-- Props
-- Dynamic rendering with `.map()`
-- Reusable components
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## Technologies
+## React Compiler
 
-```text
-React
-Vite
-JavaScript
-JSX
-CSS
-```
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Components
+## Expanding the Oxlint configuration
 
-- Header
-- About
-- Skills
-- Projects
-- NavBar
-- Footer
-
-## Installation
-
-```bash
-npm install
-npm run dev
-```
-
-## Component Architecture
-
-```text
-App.jsx
-├── NavBar.jsx
-├── Header.jsx
-├── About.jsx
-├── Skills.jsx
-├── Projects.jsx
-└── Footer.jsx
-```
-
-## Props Flow
-
-- `App.jsx` → `Header.jsx`: `name`, `rollNumber`, `themeColor`
-- `App.jsx` → `About.jsx`: `bio`
-- `App.jsx` → `Skills.jsx`: `skillList`
-- `App.jsx` → `Projects.jsx`: `projects`
-- `App.jsx` → `Footer.jsx`: `email`, `githubUrl`, `linkedinUrl`, `name`
-
-## Learning Outcome
-
-This project shows how to build a clean single-page UI using reusable functional components and parent-to-child data flow with props in React.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
