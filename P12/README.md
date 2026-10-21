@@ -242,3 +242,12 @@ npm --prefix client run build
 
 ### Q3: How do you pass secret environment variables (like MongoDB credentials) to GitHub Actions?
 **Answer:** Secrets are stored securely under repository settings in **Settings > Secrets and variables > Actions**. In the workflow YAML file, they are injected securely into runner environment variables using expression syntax: `MONGO_URI: ${{ secrets.MONGO_URI }}`.
+
+## Student Information
+
+- **Name:** Divyata Savaj
+- **ID:** 24CS091
+- **Email:** 24cs091@charusat.edu.in
+- **Semester:** 5th Semester
+- **Program:** B.Tech
+- **Department:** CSE-CSPIT
