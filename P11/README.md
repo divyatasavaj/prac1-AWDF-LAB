@@ -254,3 +254,12 @@ docker compose down -v
 
 ### Q3: Why is Alpine Linux (`node:18-alpine`) preferred over standard Node images (`node:18`)?
 **Answer:** `node:18` is based on Debian Linux and is over ~1 GB in uncompressed size. `node:18-alpine` is built on lightweight Alpine Linux and is only ~170 MB. Smaller base images result in faster download speeds, smaller attack surfaces, reduced container startup latency, and lower storage costs.
+
+## Student Information
+
+- **Name:** Divyata Savaj
+- **ID:** 24CS091
+- **Email:** 24cs091@charusat.edu.in
+- **Semester:** 5th Semester
+- **Program:** B.Tech
+- **Department:** CSE-CSPIT
